@@ -1,17 +1,19 @@
-var mongoose = require('mongoose')
-var mongoosePaginate = require('mongoose-paginate')
+var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 
-
-var TeamTrackerSchema = new mongoose.Schema({
+var PlayerSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     nickName: String,
     dateOfBirth: Date,
     jerseyNumber: String,
-    position: String
+    position: String,
+    teamId: ObjectId
 })
 
-TeamTrackerSchema.plugin(mongoosePaginate)
-const Player = mongoose.model('Player', TeamTrackerSchema)
+PlayerSchema.plugin(mongoosePaginate)
+const Player = mongoose.model('Player', PlayerSchema)
 
 module.exports = Player;
